@@ -26,6 +26,10 @@ class _MyAppState extends State<MyApp> {
   double ans = 0;
   double cm = 0;
   bool tap = false;
+  double weight = 0;
+  double height = 0;
+  int age = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -238,22 +242,57 @@ class _MyAppState extends State<MyApp> {
                                 color: const Color(0xff1D1E33),
                               ),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   const Text(
                                     "Weight",
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 15),
                                   ),
-                                  const Padding(padding: EdgeInsets.all(10)),
-                                  TextField(
-                                    decoration:
-                                        const InputDecoration(hintText: " "),
-                                    onChanged: (l) {
-                                      kg = l;
-                                    },
-                                    style: const TextStyle(
-                                        color: Colors.white, fontSize: 15),
+                                  Text("${weight.toInt()}",
+                                      style: const TextStyle(
+                                          fontSize: 35,
+                                          color: Color(0xffFFFFFF))),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      FloatingActionButton(
+                                        backgroundColor:
+                                            const Color(0xffEB1555),
+                                        onPressed: () {
+                                          setState(() {
+                                            weight++;
+                                          });
+                                        },
+                                        child: const Text(
+                                          "+",
+                                          style: TextStyle(
+                                              fontSize: 26,
+                                              color: Color(0xff1D1E33)),
+                                        ),
+                                      ),
+                                      FloatingActionButton(
+                                        backgroundColor:
+                                            const Color(0xffEB1555),
+                                        onPressed: () {
+                                          setState(() {
+                                            if (weight.toInt() <= 0) {
+                                              weight = 0;
+                                            } else {
+                                              weight--;
+                                            }
+                                          });
+                                        },
+                                        child: const Text(
+                                          "-",
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              color: Color(0xff1D1E33)),
+                                        ),
+                                      )
+                                    ],
                                   ),
                                 ],
                               ),
@@ -287,18 +326,56 @@ class _MyAppState extends State<MyApp> {
                                 color: const Color(0xff1D1E33),
                               ),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Text(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  const Text(
                                     "Age",
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 15),
                                   ),
-                                  Padding(padding: EdgeInsets.all(10)),
-                                  TextField(
-                                    decoration: InputDecoration(hintText: " "),
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 15),
+                                  Text(
+                                    "$age",
+                                    style: const TextStyle(
+                                        fontSize: 35, color: Color(0xffFFFFFF)),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      FloatingActionButton(
+                                        backgroundColor:
+                                            const Color(0xffEB1555),
+                                        onPressed: () {
+                                          setState(() {
+                                            age++;
+                                          });
+                                        },
+                                        child: const Text(
+                                          "+",
+                                          style: TextStyle(
+                                              fontSize: 26,
+                                              color: Color(0xff1D1E33)),
+                                        ),
+                                      ),
+                                      FloatingActionButton(
+                                        backgroundColor:
+                                            const Color(0xffEB1555),
+                                        onPressed: () {
+                                          if (age <= 2) {
+                                            age = 2;
+                                          } else {
+                                            age--;
+                                          }
+                                        },
+                                        child: const Text(
+                                          "-",
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              color: Color(0xff1D1E33)),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -314,7 +391,11 @@ class _MyAppState extends State<MyApp> {
             const Padding(padding: EdgeInsets.all(10)),
             Container(
               height: 50,
-              width: 350,
+              width: 380,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color(0xff1D1E33),
+              ),
               alignment: Alignment.center,
               child: Text(
                 "${ans.toInt()}",
