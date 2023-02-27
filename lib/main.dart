@@ -189,7 +189,7 @@ class _MyAppState extends State<MyApp> {
                                     Text(
                                       "${cm.toInt()}",
                                       style: const TextStyle(
-                                          color: Colors.white, fontSize: 10),
+                                          color: Colors.white, fontSize: 20),
                                     ),
                                     const Text(
                                       "\ncm",
@@ -258,40 +258,44 @@ class _MyAppState extends State<MyApp> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      FloatingActionButton(
-                                        backgroundColor:
-                                            const Color(0xffEB1555),
-                                        onPressed: () {
-                                          setState(() {
-                                            weight++;
-                                          });
-                                        },
-                                        child: const Text(
-                                          "+",
-                                          style: TextStyle(
-                                              fontSize: 26,
-                                              color: Color(0xff1D1E33)),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          height: 55,
+                                          width: 55,
+                                          decoration: const BoxDecoration(
+                                              color: Color(0xffEB1555),
+                                              shape: BoxShape.circle),
+                                          child: const Center(
+                                            child: Text(
+                                              "+",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                      FloatingActionButton(
-                                        backgroundColor:
-                                            const Color(0xffEB1555),
-                                        onPressed: () {
-                                          setState(() {
-                                            if (weight.toInt() <= 0) {
-                                              weight = 0;
-                                            } else {
-                                              weight--;
-                                            }
-                                          });
-                                        },
-                                        child: const Text(
-                                          "-",
-                                          style: TextStyle(
-                                              fontSize: 30,
-                                              color: Color(0xff1D1E33)),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          height: 55,
+                                          width: 55,
+                                          decoration: const BoxDecoration(
+                                              color: Color(0xffEB1555),
+                                              shape: BoxShape.circle),
+                                          child: const Center(
+                                            child: Text(
+                                              "-",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 30,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -343,36 +347,42 @@ class _MyAppState extends State<MyApp> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      FloatingActionButton(
-                                        backgroundColor:
-                                            const Color(0xffEB1555),
-                                        onPressed: () {
-                                          setState(() {
-                                            age++;
-                                          });
-                                        },
-                                        child: const Text(
-                                          "+",
-                                          style: TextStyle(
-                                              fontSize: 26,
-                                              color: Color(0xff1D1E33)),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          height: 55,
+                                          width: 55,
+                                          decoration: const BoxDecoration(
+                                              color: Color(0xffEB1555),
+                                              shape: BoxShape.circle),
+                                          child: const Center(
+                                            child: Text(
+                                              "+",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                      FloatingActionButton(
-                                        backgroundColor:
-                                            const Color(0xffEB1555),
-                                        onPressed: () {
-                                          if (age <= 2) {
-                                            age = 2;
-                                          } else {
-                                            age--;
-                                          }
-                                        },
-                                        child: const Text(
-                                          "-",
-                                          style: TextStyle(
-                                              fontSize: 30,
-                                              color: Color(0xff1D1E33)),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          height: 55,
+                                          width: 55,
+                                          decoration: const BoxDecoration(
+                                              color: Color(0xffEB1555),
+                                              shape: BoxShape.circle),
+                                          child: const Center(
+                                            child: Text(
+                                              "-",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 30,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -394,7 +404,7 @@ class _MyAppState extends State<MyApp> {
               width: 380,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Color(0xff1D1E33),
+                color: const Color(0xff1D1E33),
               ),
               alignment: Alignment.center,
               child: Text(
@@ -416,21 +426,28 @@ class _MyAppState extends State<MyApp> {
                     );
                   },
                   child: Container(
-                    height: 50,
-                    width: 390,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(300),
-                      color: const Color(0xffEB1555),
-                    ),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      "Calculate",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25),
-                    ),
-                  ),
+                      height: 50,
+                      width: 390,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(300),
+                        color: const Color(0xffEB1555),
+                      ),
+                      alignment: Alignment.center,
+                      child: TweenAnimationBuilder(
+                          tween: Tween<double>(begin: 0, end: 1),
+                          duration: const Duration(milliseconds: 1000),
+                          builder: (context, val, widget) {
+                            return Transform.scale(
+                              scale: val,
+                              child: const Text(
+                                "Calculate",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 25),
+                              ),
+                            );
+                          })),
                 ),
               ],
             ),
